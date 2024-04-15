@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .endpoint {
+            margin-top: 30px;
+        }
+        .endpoint h2 {
+            margin-bottom: 10px;
+        }
+        .endpoint p {
+            margin-top: 5px;
+        }
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .param-table th, .param-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .param-table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MonitoringApi Documentation</h1>
+        
+        <div class="endpoint">
+            <h2>Serviço: "Sensores"</h2>
+             <h2>POST -  /api/Sensores</h2>
+            <p>Api para inserir os sensores</p>
+            <h3>Parameters:</h3>
+            <table class="param-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Id</td>
+                    <td>int</td>
+                    <td>Id do sensor</td>
+                </tr>
+                <tr>
+                    <td>Codigo</td>
+                    <td>string</td>
+                    <td>Codigo do sensor</td>
+                </tr>
+            </table>
+            
+            <h2>GET - /api/Sensores/listartodos</h2>
+            <p>Retorna uma lista de sensores cadastrados.</p>                        
+        </div>
+        
+        <div class="endpoint">
+            <h2>Serviço: "SetorEquipamento"</h2>
+            <h2>GET -  /api/SetorEquipamento/listartodos</h2>
+            <p>Retorna uma lista de setores ou equipamentos cadastrados.</p>
+            
+            <h2>POST -  /api/SetorEquipamento</h2>
+            <p>Api para inserir o setor ou equipamento</p>
+            <h3>Parameters:</h3>
+            <table class="param-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>nome</td>
+                    <td>string</td>
+                    <td>Nome do setor ou do equipamento</td>
+                </tr>               
+            </table>
+            
+            <h2>POST -  /api/SetorEquipamento/vincularsensor</h2>
+            <p>Api para vincular o setor ou equipamento a um sensor</p>
+            <h3>Parameters:</h3>
+            <table class="param-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>IdSensor</td>
+                    <td>int</td>
+                    <td>Id do sensor. OBS(Recuperar id no metodo "GET - /api/Sensores/listartodos" do serviço "Sensores")</td>
+                </tr>
+                <tr>
+                    <td>IdSetorEquipamento</td>
+                    <td>int</td>
+                    <td>Id do setor ou equipamento. OBS(Recuperar id no metodo "GET - /api/SetorEquipamento/listartodos" do serviço "SetorEquipamento")</td>
+                </tr>
+            </table>
+                        
+        </div> 
+        
+        <div class="endpoint">
+            <h2>Serviço: "Medicao"</h2>
+            <h2>GET -  /api/Medicao/ultimas-medicoes/{idSetorEquipamento}</h2>
+            <p>Retorna as últimas 10 medições de todos os sensores vinculados a um setor ou equipamento.</p>
+            <h3>Parameters:</h3>
+            <table class="param-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>idSetorEquipamento</td>
+                    <td>int</td>
+                    <td>Id do setor ou equipamento. OBS(Recuperar id no metodo "GET - /api/SetorEquipamento/listartodos" do serviço "SetorEquipamento")</td>
+                </tr>               
+            </table>
+            
+            <h2>POST -  /api/Medicao</h2>
+            <p>Api para inserir a medição a um sensor</p>
+            <h3>Parameters:</h3>
+            <table class="param-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>SensorId</td>
+                    <td>int</td>
+                    <td>Id do sensor. OBS(Recuperar id no metodo "GET - /api/Sensores/listartodos" do serviço "Sensores")</td>
+                </tr>
+                <tr>
+                    <td>Valor</td>
+                    <td>decimal</td>
+                    <td>Valor da medição</td>
+                </tr>
+                <tr>
+                    <td>DataHora</td>
+                    <td>DateTime</td>
+                    <td>Data da medição</td>
+                </tr>
+            </table>        
+            
+        </div> 
+        
+             
+    </div>
+</html>
