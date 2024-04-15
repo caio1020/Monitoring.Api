@@ -8,7 +8,7 @@
 
 #### Instruções do banco de dados:
 
-1. Necessário ter o DBeaver ou SQL Server instalado.
+1. Necessário ter algum IDE para acessar o PostgreSQL. Ex: DBeaver.
 2. Alterar a connectionString na pasta `appsettings` do projeto.
 3. Executar o seguinte comando: `update-database`.
 
